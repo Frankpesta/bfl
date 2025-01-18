@@ -12,8 +12,8 @@ const Navbar = () => {
 				<Link href={"/"} className="w-36">
 					<Image
 						src={"/assets/images/logo.png"}
-						width={128}
-						height={38}
+						width={58}
+						height={10}
 						alt="BFL logo"
 					/>
 				</Link>
