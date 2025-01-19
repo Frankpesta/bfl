@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const notoSans = Noto_Sans({
 	variable: "--font-noto-sans",
@@ -27,12 +28,13 @@ export default function RootLayout({
 			<body className={`${notoSans.variable} antialiased`}>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
+					defaultTheme="dark"
 					enableSystem
 					disableTransitionOnChange>
 					<Navbar />
 					{children}
 					<Footer />
+					<Toaster />
 				</ThemeProvider>
 			</body>
 		</html>
