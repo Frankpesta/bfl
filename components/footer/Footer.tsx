@@ -16,8 +16,8 @@ const Footer = () => {
 							<Image
 								src={"/assets/images/logo.png"}
 								alt="logo"
-								width={128}
-								height={28}
+								width={30}
+								height={10}
 							/>
 							<span className="text-xl font-bold text-white">
 								BenjaFamilyLabs
