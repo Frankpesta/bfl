@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+		<div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900">
 			<AboutHero />
 			<KeyFeatures />
 			<TeamSection />

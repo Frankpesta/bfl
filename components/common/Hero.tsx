@@ -1,6 +1,7 @@
 import React from "react";
 import { FlipWords } from "../ui/flip-words";
 import { ArrowRight, ChartLine, Database, FlaskConical } from "lucide-react";
+import { Owners } from "./animated-tooltip";
 
 const Hero = () => {
 	const words = [
@@ -39,7 +40,9 @@ const Hero = () => {
 							Leveraging advanced analytics and machine learning to unlock new
 							insights in financial markets and risk management.
 						</p>
-
+						<div className="">
+							<Owners />
+						</div>
 						<div className="flex flex-col sm:flex-row gap-4">
 							<button className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
 								Explore Research
