@@ -166,7 +166,7 @@ const HomeSections = () => {
 
 						{/* Team Grid */}
 						<div className="grid grid-cols-2 gap-4">
-							{[1, 2, 3, 4].map((i) => (
+							{[1].map((i) => (
 								<div
 									key={i}
 									className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
