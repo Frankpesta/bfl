@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import { Medal, ArrowRight, BookOpen, Users, ChartBar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AnimatedTestimonialsDemo } from "../animated-testimonial";
 
 const HomeSections = () => {
 	// Sample publications data
@@ -110,77 +112,7 @@ const HomeSections = () => {
 					</div>
 				</div>
 			</div>
-
-			{/* Team Collaboration Section */}
-			<div className="bg-white dark:bg-gray-900 py-24">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid md:grid-cols-2 gap-12 items-center">
-						<div className="space-y-6">
-							<h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-								Collaborative Research Environment
-							</h2>
-							<p className="text-xl text-gray-600 dark:text-gray-300">
-								Our team brings together experts from finance, computer science,
-								and economics to tackle complex market challenges.
-							</p>
-							<div className="space-y-4">
-								{[
-									{
-										icon: Users,
-										title: "Cross-disciplinary Teams",
-										description: "Combining expertise from multiple domains",
-									},
-									{
-										icon: BookOpen,
-										title: "Open Research",
-										description:
-											"Commitment to reproducible and transparent research",
-									},
-									{
-										icon: ChartBar,
-										title: "Industry Impact",
-										description:
-											"Direct application of research in financial markets",
-									},
-								].map((feature, index) => (
-									<div key={index} className="flex gap-4">
-										<div className="flex-shrink-0">
-											<feature.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-										</div>
-										<div>
-											<h3 className="font-semibold text-gray-900 dark:text-white">
-												{feature.title}
-											</h3>
-											<p className="text-gray-600 dark:text-gray-300">
-												{feature.description}
-											</p>
-										</div>
-									</div>
-								))}
-							</div>
-							<Button size="lg">
-								Contact our team
-								<ArrowRight className="ml-2 h-4 w-4" />
-							</Button>
-						</div>
-
-						{/* Team Grid */}
-						<div className="grid grid-cols-2 gap-4">
-							{[1].map((i) => (
-								<div
-									key={i}
-									className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
-									<img
-										src={`/api/placeholder/400/400`}
-										alt="Team collaboration"
-										className="w-full h-full object-cover"
-									/>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
+			<AnimatedTestimonialsDemo />
 		</>
 	);
 };

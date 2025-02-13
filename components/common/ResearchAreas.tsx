@@ -8,10 +8,10 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from "recharts";
-import { Book, Brain, TrendingUp, Network } from "lucide-react";
+import { Book, Brain, TrendingUp, Network, Code2 } from "lucide-react";
+import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
 const ResearchSection = () => {
-	// Sample data for the chart
 	const chartData = [
 		{ name: "Jan", value: 40 },
 		{ name: "Feb", value: 45 },
@@ -23,37 +23,34 @@ const ResearchSection = () => {
 
 	const researchAreas = [
 		{
-			icon: Brain,
-			title: "Machine Learning in Finance",
+			icon: <Brain className="w-12 h-12 text-violet-500" />,
+			title: "AI in Financial Services",
 			description:
-				"Developing novel ML algorithms for market prediction and risk assessment",
-			stat: "15+ Models",
-			color: "bg-purple-500",
+				"Developing advanced AI solutions for risk assessment, fraud detection, and automated trading systems",
+			metric: "12+ AI Models Deployed",
 		},
 		{
-			icon: TrendingUp,
-			title: "Quantitative Trading",
+			icon: <TrendingUp className="w-12 h-12 text-blue-500" />,
+			title: "Blockchain Innovation",
 			description:
-				"Researching systematic trading strategies and market microstructure",
-			stat: "200+ Backtests",
-			color: "bg-blue-500",
+				"Researching DeFi protocols and developing enterprise blockchain applications for financial institutions",
+			metric: "25+ Smart Contracts Audited",
 		},
 		{
-			icon: Network,
-			title: "Network Analysis",
-			description: "Studying financial networks and systemic risk propagation",
-			stat: "3 Papers",
-			color: "bg-green-500",
+			icon: <Network className="w-12 h-12 text-green-500" />,
+			title: "Financial Systems Integration",
+			description:
+				"Building bridges between traditional finance and blockchain technology through innovative middleware",
+			metric: "100+ APIs Developed",
 		},
 		{
-			icon: Book,
-			title: "Economic Policy",
-			description: "Analyzing impact of policy decisions on financial markets",
-			stat: "4 Publications",
-			color: "bg-orange-500",
+			icon: <Code2 className="w-12 h-12 text-orange-500" />,
+			title: "Fintech Solutions",
+			description:
+				"Creating next-generation financial software focusing on security, scalability, and performance",
+			metric: "50+ Enterprise Solutions",
 		},
 	];
-
 	return (
 		<div className="bg-gray-50 dark:bg-gray-800">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -63,7 +60,8 @@ const ResearchSection = () => {
 					</h2>
 					<p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
 						Our interdisciplinary approach combines financial expertise with
-						cutting-edge technology to address complex market challenges.
+						cutting-edge technology to address complex market challenges and
+						drive innovation in the financial sector.
 					</p>
 				</div>
 
@@ -73,8 +71,8 @@ const ResearchSection = () => {
 							key={index}
 							className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
 							<div
-								className={`${area.color} w-12 h-12 rounded-lg flex items-center justify-center mb-4`}>
-								<area.icon className="h-6 w-6 text-white" />
+								className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4`}>
+								{area.icon}
 							</div>
 							<h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
 								{area.title}
@@ -82,9 +80,6 @@ const ResearchSection = () => {
 							<p className="text-gray-600 dark:text-gray-400 mb-4">
 								{area.description}
 							</p>
-							<div className="text-sm font-medium text-gray-900 dark:text-gray-200">
-								{area.stat}
-							</div>
 						</div>
 					))}
 				</div>

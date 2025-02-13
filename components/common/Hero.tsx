@@ -1,6 +1,15 @@
+"use client";
 import React, { useState } from "react";
 import { FlipWords } from "../ui/flip-words";
-import { ArrowRight, ChartLine, Database, FlaskConical } from "lucide-react";
+import {
+	TrendingUp,
+	Blocks,
+	Landmark,
+	Code2,
+	Lightbulb,
+	ArrowRight,
+	LoaderIcon,
+} from "lucide-react";
 import { Owners } from "./animated-tooltip";
 import {
 	Dialog,
@@ -21,13 +30,17 @@ const Hero = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { toast } = useToast();
 
+	const handleBlog = () => {
+		window.location.href = "https://blog.benjafamilylabs.com";
+	};
+
 	async function handleSubmit(formData: FormData) {
 		setIsSubmitting(true);
 		try {
 			// Static/auto-generated values
 			formData.append("startTime", getNextAvailableTime());
 			formData.append("duration", "30"); // 30 minutes meeting
-			formData.append("ownerEmail", "franklinolisaemeka3@gmail.com"); // Your email
+			formData.append("ownerEmail", "support@benjafamilylabs.com"); // Your email
 			formData.append("meetingTitle", "Initial Consultation Call");
 			formData.append(
 				"description",
@@ -87,13 +100,7 @@ const Hero = () => {
 		return now.toISOString();
 	}
 
-	const words = [
-		"Research",
-		"Analysis",
-		"Investigation",
-		"Exploration",
-		"Inquiry",
-	];
+	const words = ["Solutions", "Answers", "Innovations", "Strategies"];
 	return (
 		<div className="relative overflow-hidden bg-white dark:bg-gray-800">
 			{/* Background Pattern */}
@@ -110,18 +117,21 @@ const Hero = () => {
 						</div>
 
 						<h1 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
-							Advancing Financial
+							Pioneering Financial Technology
 							<span className="text-blue-600 dark:text-blue-400">
 								{" "}
 								<FlipWords words={words} />
 							</span>
 							<br />
-							Through Data Science
+							for Tomorrow's Business
 						</h1>
 
-						<p className="text-xl text-gray-600 dark:text-gray-300">
-							Leveraging advanced analytics and machine learning to unlock new
-							insights in financial markets and risk management.
+						<p className="text-lg text-justify text-gray-600 dark:text-gray-300">
+							At BenjaFamily Labs (BFL), we bridge traditional finance with
+							blockchain innovation, delivering enterprise-grade solutions that
+							transform business operations. Our comprehensive suite of services
+							combines financial expertise with cutting-edge technology to drive
+							your business forward.
 						</p>
 						<div className="">
 							<Owners />
@@ -169,13 +179,13 @@ const Hero = () => {
 												size="sm"
 												className="bg-blue-600 text-white hover:bg-blue-700"
 												disabled={isSubmitting}>
-												{isSubmitting ? "Scheduling..." : "Schedule Meeting"}
+												{isSubmitting ? <LoaderIcon /> : "Schedule Meeting"}
 											</Button>
 										</DialogFooter>
 									</form>
 								</DialogContent>
 							</Dialog>
-							<Button size={"lg"} variant="outline">
+							<Button size={"lg"} variant="outline" onClick={handleBlog}>
 								Read our Blog
 							</Button>
 						</div>
@@ -186,26 +196,40 @@ const Hero = () => {
 						<div className="grid grif-cols-1 md:grid-cols-2 gap-6">
 							{[
 								{
-									icon: ChartLine,
-									title: "Market Analysis",
+									icon: TrendingUp,
+									title: "Enterprise Financial Consulting",
 									description:
-										"Advanced statistical modeling of market dynamics",
+										"Strategic financial guidance driving enterprise growth and optimization",
 								},
 								{
-									icon: FlaskConical,
-									title: "Research Methods",
-									description: "Innovative quantitative research approaches",
+									icon: Blocks,
+									title: "Custom Blockchain Application",
+									description:
+										"Secure, scalable blockchain solutions tailored to your business requirements",
 								},
 								{
-									icon: Database,
-									title: "Big Data",
-									description: "Large-scale financial data processing",
+									icon: Landmark,
+									title: "Prime Brokerage Services",
+									description:
+										"Comprehensive trading infrastructure and execution services for institutional clients",
+								},
+								{
+									icon: Code2,
+									title: "Financial Software Development",
+									description:
+										"Custom financial software solutions engineered for performance and reliability",
+								},
+								{
+									icon: Lightbulb,
+									title: "Fintech R&D Solutions",
+									description:
+										"Innovative research and development to keep you ahead in the fintech revolution",
 								},
 							].map((feature, index) => (
 								<div
 									key={index}
 									className="flex flex-col p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition">
-									<feature.icon className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-4" />
+									<feature.icon className="h-8 w-8 text-orange-500 dark:text-orange-500 mb-4" />
 									<h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-2">
 										{feature.title}
 									</h3>
