@@ -30,7 +30,7 @@ const Navbar = () => {
 			// Static/auto-generated values
 			formData.append("startTime", getNextAvailableTime());
 			formData.append("duration", "30"); // 30 minutes meeting
-			formData.append("ownerEmail", "franklinolisaemeka3@gmail.com"); // Your email
+			formData.append("ownerEmail", "support@benjafamilylabs.com"); // Your email
 			formData.append("meetingTitle", "Initial Consultation Call");
 			formData.append(
 				"description",
