@@ -10,7 +10,6 @@ import {
 	ArrowRight,
 	LoaderIcon,
 } from "lucide-react";
-import { Owners } from "./animated-tooltip";
 import {
 	Dialog,
 	DialogContent,
@@ -133,9 +132,7 @@ const Hero = () => {
 							combines financial expertise with cutting-edge technology to drive
 							your business forward.
 						</p>
-						<div className="">
-							<Owners />
-						</div>
+
 						<div className="flex flex-col sm:flex-row gap-4">
 							<Dialog>
 								<DialogTrigger asChild>
