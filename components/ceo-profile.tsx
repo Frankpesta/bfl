@@ -25,12 +25,12 @@ const LeadershipSection = () => {
 							/>
 							<div className="absolute bottom-4 left-4 flex gap-3">
 								<a
-									href="#"
+									href="http://www.linkedin.com/in/benjaminonwuso-76b655349"
 									className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
 									<LinkedinIcon className="w-5 h-5" />
 								</a>
 								<a
-									href="#"
+									href="https://x.com/Benjami55934529?t=ov4EhOYJc4gehBxLXhjOag&s=09"
 									className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
 									<TwitterIcon className="w-5 h-5" />
 								</a>

@@ -112,7 +112,6 @@ const HomeSections = () => {
 					</div>
 				</div>
 			</div>
-			<AnimatedTestimonialsDemo />
 		</>
 	);
 };

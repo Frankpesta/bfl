@@ -1,14 +1,16 @@
 "use client";
 import Hero from "@/components/common/Hero";
-import HomeSections from "@/components/common/HomePageSections";
-import ResearchSection from "@/components/common/ResearchAreas";
+import HeroSection from "@/components/home-cta";
+import InsightsPartnersSection from "@/components/home-insights";
+import ServicesSection from "@/components/home-services";
 
 export default function Home() {
 	return (
 		<>
 			<Hero />
-			<ResearchSection />
-			<HomeSections />
+			<ServicesSection />
+			<HeroSection />
+			{/* <InsightsPartnersSection /> */}
 		</>
 	);
 }

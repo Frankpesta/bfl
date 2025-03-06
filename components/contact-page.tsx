@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	Accordion,
@@ -6,6 +7,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +21,62 @@ import {
 } from "lucide-react";
 
 const ContactPage = () => {
+	const [formData, setFormData] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		subject: "",
+		message: "",
+	});
+
+	const [loading, setLoading] = useState(false);
+	const [status, setStatus] = useState<{
+		success: boolean;
+		message: string;
+	} | null>(null);
+
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setLoading(true);
+		setStatus(null);
+
+		try {
+			await emailjs.send(
+				"service_ias3s1o",
+				"template_8a1r6ws",
+				{
+					from_name: `${formData.firstName} ${formData.lastName}`,
+					from_email: formData.email,
+					subject: formData.subject,
+					message: formData.message,
+				},
+				"7HJDYauZdxSg7FBVe"
+			);
+
+			setStatus({ success: true, message: "Message sent successfully!" });
+			setFormData({
+				firstName: "",
+				lastName: "",
+				email: "",
+				subject: "",
+				message: "",
+			});
+		} catch (error) {
+			setStatus({
+				success: false,
+				message: "Failed to send message. Try again.",
+			});
+		}
+
+		setLoading(false);
+	};
+
 	const contactMethods = [
 		{
 			icon: <Phone className="h-6 w-6" />,
@@ -115,33 +173,63 @@ const ContactPage = () => {
 						<CardTitle>Send us a Message</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<form className="space-y-4">
+						<form onSubmit={handleSubmit} className="space-y-4">
 							<div className="grid grid-cols-2 gap-4">
 								<div className="space-y-2">
 									<label className="text-sm font-medium">First Name</label>
-									<Input placeholder="John" />
+									<Input
+										name="firstName"
+										value={formData.firstName}
+										onChange={handleChange}
+										placeholder="John"
+									/>
 								</div>
 								<div className="space-y-2">
 									<label className="text-sm font-medium">Last Name</label>
-									<Input placeholder="Doe" />
+									<Input
+										name="lastName"
+										value={formData.lastName}
+										onChange={handleChange}
+										placeholder="Doe"
+										required
+									/>
 								</div>
 							</div>
 							<div className="space-y-2">
 								<label className="text-sm font-medium">Email</label>
-								<Input type="email" placeholder="john@example.com" />
+								<Input
+									name="email"
+									type="email"
+									value={formData.email}
+									onChange={handleChange}
+									placeholder="john@example.com"
+									required
+								/>
 							</div>
 							<div className="space-y-2">
 								<label className="text-sm font-medium">Subject</label>
-								<Input placeholder="How can we help?" />
+								<Input
+									name="subject"
+									value={formData.subject}
+									onChange={handleChange}
+									required
+									placeholder="How can we help?"
+								/>
 							</div>
 							<div className="space-y-2">
 								<label className="text-sm font-medium">Message</label>
 								<Textarea
+									name="message"
+									value={formData.message}
+									onChange={handleChange}
+									required
 									placeholder="Tell us about your project..."
 									className="min-h-[120px]"
 								/>
 							</div>
-							<Button className="w-full">Send Message</Button>
+							<Button type="submit" className="w-full" disabled={loading}>
+								{loading ? "Sending..." : "Send Message"}
+							</Button>
 						</form>
 					</CardContent>
 				</Card>
