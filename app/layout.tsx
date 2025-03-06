@@ -25,6 +25,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<script
+				id="chatway"
+				async={true}
+				src="https://cdn.chatway.app/widget.js?id=F5QWa1VdoXBK"
+			/>
 			<body className={`${notoSans.variable} antialiased`}>
 				<ThemeProvider
 					attribute="class"

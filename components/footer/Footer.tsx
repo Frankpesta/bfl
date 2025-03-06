@@ -2,6 +2,7 @@
 import React from "react";
 import { X, Linkedin, Mail, Github, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
 	const year = new Date().getFullYear();
@@ -28,36 +29,37 @@ const Footer = () => {
 							machine learning approaches.
 						</p>
 						<div className="flex space-x-4">
-							<a href="#" className="hover:text-blue-400 transition">
+							<a
+								href="https://x.com/Benjami55934529?t=ov4EhOYJc4gehBxLXhjOag&s=09"
+								className="hover:text-orange-500 transition">
 								<X className="h-5 w-5" />
 							</a>
-							<a href="#" className="hover:text-blue-400 transition">
+							<a
+								href="http://www.linkedin.com/in/benjaminonwuso-76b655349"
+								className="hover:text-orange-500 transition">
 								<Linkedin className="h-5 w-5" />
-							</a>
-							<a href="#" className="hover:text-blue-400 transition">
-								<Github className="h-5 w-5" />
 							</a>
 						</div>
 					</div>
 
 					{/* Quick Links */}
 					<div>
-						<h3 className="text-white font-semibold mb-6">Research Areas</h3>
+						<h3 className="text-white font-semibold mb-6">Services</h3>
 						<ul className="space-y-4">
 							{[
-								"Machine Learning",
-								"Market Analysis",
-								"Risk Management",
-								"Economic Policy",
-								"Publications",
+								"Financial Consulting Services (B2B)",
+								"Blockchain Application Development",
+								"Prime Brokerage Services",
+								"Financial Software Development",
+								"Fintech Sartups R&D Services",
 							].map((item) => (
 								<li key={item}>
-									<a
-										href="#"
-										className="hover:text-blue-400 transition flex items-center group">
+									<Link
+										href="/services"
+										className="hover:text-orange-500 transition flex items-center group">
 										<span>{item}</span>
 										<ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 transition-opacity" />
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -65,22 +67,16 @@ const Footer = () => {
 
 					{/* Resources */}
 					<div>
-						<h3 className="text-white font-semibold mb-6">Resources</h3>
+						<h3 className="text-white font-semibold mb-6">Company</h3>
 						<ul className="space-y-4">
-							{[
-								"Documentation",
-								"Research Papers",
-								"Case Studies",
-								"Data Sets",
-								"API Access",
-							].map((item) => (
+							{["Home", "About Us", "Services", "Contact Us"].map((item) => (
 								<li key={item}>
-									<a
-										href="#"
-										className="hover:text-blue-400 transition flex items-center group">
+									<Link
+										href="/"
+										className="hover:text-orange-500 transition flex items-center group">
 										<span>{item}</span>
 										<ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 transition-opacity" />
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -90,23 +86,9 @@ const Footer = () => {
 					<div>
 						<h3 className="text-white font-semibold mb-6">Stay Updated</h3>
 						<p className="text-gray-400 mb-4">
-							Subscribe to our newsletter for the latest research insights.
+							Read the latest news and updates from BenjaFamily Labs. We keep
+							you updated with the latest trends in financial research.
 						</p>
-						<form className="space-y-3">
-							<div className="flex items-center bg-gray-800 rounded-lg p-1">
-								<Mail className="h-5 w-5 text-gray-400 ml-3" />
-								<input
-									type="email"
-									placeholder="Enter your email"
-									className="bg-transparent border-0 text-white placeholder-gray-400 px-4 py-2 flex-1 focus:outline-none focus:ring-0"
-								/>
-							</div>
-							<button
-								type="submit"
-								className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 transition">
-								Subscribe
-							</button>
-						</form>
 					</div>
 				</div>
 
@@ -118,19 +100,14 @@ const Footer = () => {
 						</div>
 						<div className="flex space-x-6 text-sm">
 							<a
-								href="#"
-								className="text-gray-400 hover:text-blue-400 transition">
+								href="https://blog.benjafamilylabs.com/privacy-policy"
+								className="text-gray-400 hover:text-orange-500 transition">
 								Privacy Policy
 							</a>
 							<a
-								href="#"
-								className="text-gray-400 hover:text-blue-400 transition">
+								href="https://blog.benjafamilylabs.com/terms-and-conditions"
+								className="text-gray-400 hover:text-orange-500 transition">
 								Terms of Service
-							</a>
-							<a
-								href="#"
-								className="text-gray-400 hover:text-blue-400 transition">
-								Cookie Policy
 							</a>
 						</div>
 					</div>
