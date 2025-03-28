@@ -21,7 +21,12 @@ const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 // Server action to schedule meeting
 export async function scheduleMeeting(
 	formData: FormData
-): Promise<{ success: boolean; meetingLink?: string; error?: string }> {
+): Promise<{
+	success: boolean;
+	meetingLink?: string;
+	error?: string;
+	details?: any;
+}> {
 	try {
 		const startTime = formData.get("startTime") as string;
 		const duration = parseInt(formData.get("duration") as string);
@@ -30,9 +35,51 @@ export async function scheduleMeeting(
 		const meetingTitle = formData.get("meetingTitle") as string;
 		const description = formData.get("description") as string;
 
+		// Validate inputs
+		if (
+			!startTime ||
+			isNaN(duration) ||
+			!clientEmail ||
+			!ownerEmail ||
+			!meetingTitle
+		) {
+			const validationError = {
+				missingFields: {
+					startTime: !startTime,
+					duration: isNaN(duration),
+					clientEmail: !clientEmail,
+					ownerEmail: !ownerEmail,
+					meetingTitle: !meetingTitle,
+				},
+				message: "Missing required fields",
+			};
+			console.error("Validation Error:", validationError);
+			return {
+				success: false,
+				error: "Missing required fields",
+				details: validationError,
+			};
+		}
+
 		// Calculate end time
 		const startDateTime = new Date(startTime);
 		const endDateTime = new Date(startDateTime.getTime() + duration * 60000);
+
+		// Validate dates
+		if (isNaN(startDateTime.getTime()) || isNaN(endDateTime.getTime())) {
+			const dateError = {
+				startTime,
+				startDateTime: startDateTime.toString(),
+				endDateTime: endDateTime.toString(),
+				message: "Invalid date format",
+			};
+			console.error("Date Validation Error:", dateError);
+			return {
+				success: false,
+				error: "Invalid date/time format",
+				details: dateError,
+			};
+		}
 
 		// Create calendar event
 		const event = {
@@ -62,6 +109,11 @@ export async function scheduleMeeting(
 			},
 		};
 
+		console.log(
+			"Attempting to create event with payload:",
+			JSON.stringify(event, null, 2)
+		);
+
 		const response = await calendar.events.insert({
 			calendarId: "primary",
 			requestBody: event,
@@ -69,18 +121,37 @@ export async function scheduleMeeting(
 			sendUpdates: "all", // Sends emails to attendees
 		});
 
+		console.log("Google API Response:", JSON.stringify(response.data, null, 2));
+
 		return {
 			success: true,
 			meetingLink:
 				response.data.hangoutLink ??
 				response.data.conferenceData?.entryPoints?.[0]?.uri ??
 				undefined,
+			details: response.data,
 		};
-	} catch (error) {
-		console.error("Error scheduling meeting:", error);
+	} catch (error: any) {
+		console.error("Full Error Details:", {
+			message: error.message,
+			stack: error.stack,
+			response: error.response?.data,
+			code: error.code,
+			config: {
+				method: error.config?.method,
+				url: error.config?.url,
+				data: error.config?.data,
+			},
+		});
+
 		return {
 			success: false,
-			error: "Failed to schedule meeting. Please try again.",
+			error: error.message || "Failed to schedule meeting. Please try again.",
+			details: {
+				message: error.message,
+				code: error.code,
+				response: error.response?.data,
+			},
 		};
 	}
 }

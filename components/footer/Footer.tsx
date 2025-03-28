@@ -14,19 +14,12 @@ const Footer = () => {
 					{/* Brand Section */}
 					<div className="space-y-6">
 						<div className="flex items-center">
-							<Image
-								src={"/assets/images/logo.png"}
-								alt="logo"
-								width={30}
-								height={10}
-							/>
-							<span className="text-xl font-bold text-white">
-								BenjaFamilyLabs
-							</span>
+							<Image src={"/logo.png"} alt="logo" width={120} height={100} />
 						</div>
 						<p className="text-gray-400">
-							Advancing financial research through innovative data science and
-							machine learning approaches.
+							Conducting basic and applied research on Africa financial
+							ecosystem,thereby building financial technology solutions to
+							resolve identified problems.
 						</p>
 						<div className="flex space-x-4">
 							<a

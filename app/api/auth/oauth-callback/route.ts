@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 const oauth2Client = new OAuth2Client({
 	clientId: process.env.GOOGLE_CLIENT_ID,
 	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	redirectUri: "http://localhost:3000/api/auth/oauth-callback",
+	redirectUri: "https://benjafamilylabs.com/api/auth/oauth-callback",
 });
 
 export async function GET(request: Request) {
