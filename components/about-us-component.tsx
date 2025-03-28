@@ -106,8 +106,8 @@ const AboutSection = () => {
 				</CardHeader>
 				<CardContent>
 					<p className="text-muted-foreground">
-						From our inception, BFL has been driven by a singular vision: to
-						transform how financial institutions operate in the digital age. Our
+						From our inception, BFL has been driven by a singular vision: to be
+						the biggest Pan-African financial technology services firm. Our
 						journey began with providing expert financial consulting services
 						and has evolved to encompass the full spectrum of financial
 						technology solutions, including blockchain applications and advanced

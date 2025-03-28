@@ -14,12 +14,7 @@ const MobileNav = () => {
 				<SheetContent
 					side={"left"}
 					className="flex flex-col gap-6 bg-white dark:bg-gray-900 md:hidden">
-					<Image
-						src={"/assets/images/logo.png"}
-						alt="logo"
-						width={58}
-						height={10}
-					/>
+					<Image src={"/logo.png"} alt="logo" width={100} height={100} />
 					<Separator className="border border-gray-50" />
 					<NavItems />
 				</SheetContent>

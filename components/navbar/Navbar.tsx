@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 
 const Navbar = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,17 +39,17 @@ const Navbar = () => {
 			);
 
 			const result = await scheduleMeeting(formData);
-
-			if (result.success) {
+			if (!result.success) {
 				toast({
-					title: "Scheduled Successfully",
-					description: `Check your email for the invitation. Meeting link: ${result.meetingLink}`,
+					title: "Meeting Scheduling Failed.",
+					description: `Plese try again. ${result.error}`,
+					variant: "destructive",
 				});
 			} else {
 				toast({
-					title: "Failed to schedule meeting",
-					description: "Please try again.",
-					variant: "destructive",
+					title: "Meeting Scheduled Successfully",
+					description: `Check your email for the invitation. Meeting link: ${result.meetingLink}`,
+					variant: "default",
 				});
 			}
 		} catch (error) {
@@ -94,12 +95,7 @@ const Navbar = () => {
 		<header className="w-full border-b bg-white dark:bg-gray-800">
 			<div className="wrapper flex items-center justify-between">
 				<Link href={"/"} className="w-36">
-					<Image
-						src={"/assets/images/logo.png"}
-						width={58}
-						height={10}
-						alt="BFL logo"
-					/>
+					<Image src={"/logo.png"} width={120} height={100} alt="BFL logo" />
 				</Link>
 
 				<nav className="md:flex-between hidden w-full max-w-xs">
@@ -152,7 +148,11 @@ const Navbar = () => {
 										size="sm"
 										className="bg-blue-600 text-white hover:bg-blue-700"
 										disabled={isSubmitting}>
-										{isSubmitting ? "Scheduling..." : "Schedule Meeting"}
+										{isSubmitting ? (
+											<Loader2 className="text-orange-600" />
+										) : (
+											"Schedule Meeting"
+										)}
 									</Button>
 								</DialogFooter>
 							</form>
