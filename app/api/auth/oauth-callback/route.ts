@@ -10,7 +10,7 @@ const oauth2Client = new OAuth2Client({
 
 export async function GET(request: Request) {
 	const url = new URL(request.url);
-	const code = url.searchParams.get("code");
+	const code = url.searchParams.get("code"); // for deployment
 
 	if (!code) {
 		return NextResponse.json({ error: "No code provided" }, { status: 400 });
